@@ -88,7 +88,6 @@ const FeedbackModal: FC<IComponentProps> = ({ isOpen, onCancel }) => {
         message: response.data.message,
       });
     } catch (e) {
-      console.log(e);
       api.error({
         key: 'error',
         message: 'Произошла ошибка повторите позже!',
