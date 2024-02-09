@@ -22,7 +22,6 @@ const Header = () => {
           </div>
         </div>
       </header>
-      <p className="subtitle">Со стальным носком</p>
       <BurgerMenu open={open} onClose={onClose} />
     </>
   );
