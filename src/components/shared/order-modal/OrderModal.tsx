@@ -107,13 +107,6 @@ const OrderModal = () => {
               externalId: foundOffer?.externalId,
             },
           },
-          {
-            initialPrice: 0,
-            quantity: 1,
-            offer: {
-              externalId: 'ortoped-stelki-blr',
-            },
-          },
         ],
       });
 

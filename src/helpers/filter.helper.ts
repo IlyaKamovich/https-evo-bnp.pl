@@ -4,8 +4,15 @@ import uniqBy from 'lodash/uniqBy';
 import reverse from 'lodash/reverse';
 import { IOffer, Value } from '../store/data/slice';
 
+const priorityMap = { черный: 1, серый: 2, 'черный с разноцветной подошвой': 3, 'серый с разноцветной подошвой': 4 } as any;
+
 const getFilterByKey = (offers: IOffer[], key: keyof IOffer, title: string) => {
-  const uniqueOffersByKey = uniqBy(offers, (offer) => offer[key]);
+  const uniqueOffersByKey =
+    key !== 'color'
+      ? uniqBy(offers, (offer) => offer[key])
+      : uniqBy(offers, (offer) => offer[key]).sort(
+          (a, b) => priorityMap[b.color.toLocaleLowerCase()] - priorityMap[a.color.toLocaleLowerCase()]
+        );
 
   const filterItems = map(uniqueOffersByKey, (uniqueOfferByKey) => {
     return {
