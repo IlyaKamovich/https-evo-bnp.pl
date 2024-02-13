@@ -1,22 +1,26 @@
 export const ADVANTAGES = [
   {
-    src: 'images/bull/3.webp',
-    html: '<strong class="info-title">Противоударный носок</strong> <p class="info-text">Изготовлены из прочной стали и полностью защищают пальцы ног от сдавливания и падения предметов.</p>',
+    src: 'bull/1.webp',
+    html: '<strong class="info-title">Дышащая и легкая</strong> <p class="info-text">Наши специалисты подобрали идеальные материалы, чтобы обеспечить комфорт в течение дня</p>',
   },
   {
-    src: 'images/bull/4.webp',
-    html: '<strong class="info-title">Защищены от проколов</strong> <p class="info-text">Полностью защищает ступни от проколов и порезов, не сковывает движения</p>',
+    src: 'bull/2.webp',
+    html: '<strong class="info-title">Хорошая поддержка свода стопы</strong> <p class="info-text">Наши конструкции предназначены для равномерного распределения веса тела и обеспечения сбалансированной осанки</p>',
   },
   {
-    src: 'images/bull/5.webp',
-    html: '<strong class="info-title">Амортизирующие и легкие</strong> <p class="info-text">Мягкая межподошва обеспечивает превосходную амортизацию и более просторный носок для комфорта в течение всего дня.</p>',
+    src: 'bull/3.webp',
+    html: '<strong class="info-title">Широкий и удобный носок</strong> <p class="info-text">Свободный регулируемый верх не сдавливает пальцы и не нарушает кровообращение</p>',
   },
   {
-    src: 'images/bull/1.webp',
-    html: '<strong class="info-title">Гибкие</strong> <p class="info-text">Пружинный, гибкий состав помогает равномерно распределять вес тела по стопам.</p>',
+    src: 'bull/4.webp',
+    html: '<strong class="info-title">Легко надевать и снимать</strong> <p class="info-text">Эластичная конструкция по бокам экономит время при надевании и снятии и позволяет наслаждаться комфортом в течение всего дня</p>',
   },
   {
-    src: 'images/bull/2.webp',
-    html: '<strong class="info-title">Стильные</strong> <p class="info-text">Верх с переплетением крыльев обеспечивает красивый вид.</p>',
+    src: 'bull/5.webp',
+    html: '<strong class="info-title">Нескользят</strong> <p class="info-text">Резиновая подошва обеспечивает хорошее сцепление с землей и большую безопасность</p>',
+  },
+  {
+    src: 'bull/6.webp',
+    html: '<strong class="info-title">Правильная осанка</strong> <p class="info-text">Устраните боль, выровняв пальцы ног в исходное положение и уменьшив нагрузку на суставы</p>',
   },
 ];

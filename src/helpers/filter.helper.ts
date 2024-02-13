@@ -4,7 +4,7 @@ import uniqBy from 'lodash/uniqBy';
 import reverse from 'lodash/reverse';
 import { IOffer, Value } from '../store/data/slice';
 
-const priorityMap = { черный: 1, серый: 2, 'черный с разноцветной подошвой': 3, 'серый с разноцветной подошвой': 4 } as any;
+const priorityMap = { черный: 1, белый: 2, коричневый: 3 } as any;
 
 const getFilterByKey = (offers: IOffer[], key: keyof IOffer, title: string) => {
   const uniqueOffersByKey =
