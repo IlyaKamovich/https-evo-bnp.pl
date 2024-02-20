@@ -66,8 +66,7 @@ const dataSlice = createSlice({
 export const fetchOffers = createAsyncThunk('offer', async () => {
   const response = await fetch(`${CONFIG.REQUESTS.GET_OFFERS}/${CONFIG.CRM.ARTICLE}`);
   const data: IOffer[] = await response.json();
-  console.log(data);
-  return data.filter((o) => o.quantity >= 5);
+  return data;
 });
 
 export const { changeColor, changeSize, setDefaultColor, setDefaultSize } = dataSlice.actions;
