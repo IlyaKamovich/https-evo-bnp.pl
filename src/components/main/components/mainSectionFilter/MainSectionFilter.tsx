@@ -14,7 +14,9 @@ const MainSectionFilter = () => {
 
   useEffect(() => {
     const color = getFilterByKey(offers, 'color', 'Цвет')?.filters[0]?.value;
-    const size = getFilterByKey(offers, 'size', 'Размер')?.filters[0]?.value;
+    const size =
+      getFilterByKey(offers, 'size', 'Размер').filters.find(({ disabled }) => disabled === false)?.value ||
+      getFilterByKey(offers, 'size', 'Размер')?.filters[0]?.value;
 
     dispatch(setDefaultColor(color));
     dispatch(setDefaultSize(size));
