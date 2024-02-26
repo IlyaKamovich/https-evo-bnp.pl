@@ -23,4 +23,8 @@ export const ADVANTAGES = [
     src: 'bull/6.webp',
     html: '<strong class="info-title">Правильная осанка</strong> <p class="info-text">Устраните боль, выровняв пальцы ног в исходное положение и уменьшив нагрузку на суставы</p>',
   },
+  {
+    src: 'stelka.mp4',
+    html: '<strong class="info-title">ОРТОПЕДИЧЕСКАЯ СТЕЛЬКА</strong>',
+  },
 ];

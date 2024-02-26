@@ -18,7 +18,7 @@ const Header = () => {
             <button type="button" className="icon-button menu-trigger" onClick={onOpen}>
               <img src="icons/burger.svg" alt="menu" />
             </button>
-            <span>Женские ботинки Martin на толстой подошве</span>
+            <span>Ортопедические ботинки Martin на толстой подошве</span>
           </div>
         </div>
       </header>
