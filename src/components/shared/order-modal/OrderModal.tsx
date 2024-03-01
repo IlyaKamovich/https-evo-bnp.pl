@@ -69,16 +69,6 @@ const OrderModal = () => {
   };
 
   const sendData = async () => {
-    const d = {
-      ...data,
-      color,
-      size,
-    };
-
-    const formData = new FormData();
-
-    Object.keys(d).forEach((key) => formData.append(key, String(d[key as keyof typeof d])));
-
     const foundOffer = find(offers, (offer) => offer.color === color && offer.size === size);
 
     if (isEmpty(foundOffer?.externalId)) {
