@@ -12,15 +12,15 @@ const Header = () => {
   return (
     <>
       <header className="header">
-        <div className="sale">Акция! Скидка 51%</div>
         <div className="menu">
           <div className="container">
             <button type="button" className="icon-button menu-trigger" onClick={onOpen}>
               <img src="icons/burger.svg" alt="menu" />
             </button>
-            <span>Ортопедические ботинки Martin на толстой подошве</span>
+            <span>Аккумуляторная цепная мини-пила</span>
           </div>
         </div>
+        <div className="sale">ДЛЯ ОБРЕЗАНИЯ ДЕРЕВЬЕВ И РАСПИЛКИ МЕЛКИХ ДРОВ</div>
       </header>
       <BurgerMenu open={open} onClose={onClose} />
     </>

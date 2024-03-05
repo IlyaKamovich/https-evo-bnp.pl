@@ -6,22 +6,15 @@ import { useTypeDispatch } from '../../../hooks/useTypeDispatch';
 import { useTypeSelector } from '../../../hooks/useTypeSelector';
 import { isModalSelector } from '../../../store/order-modal/selectors';
 import { toggleModal } from '../../../store/order-modal/slice';
-import { colorSelector, loadingSelector, offersSelector, selectedImageSelector, sizeSelector } from '../../../store/data/selectors';
-import SelectWithTitle from '../select/SelectWithTitle';
-import { Value, changeColor, changeSize } from '../../../store/data/slice';
-import find from 'lodash/find';
 import Discount from '../discount/Discount';
 import OldPrice from '../old-price/OldPrice';
 import CurrentPrice from '../current-price/CurrentPrice';
-import { getFilterByKey } from '../../../helpers/filter.helper';
 import { updateThanksData } from '../../../store/thanks/thanks.slice';
-import { useNavigate, useSearchParams } from 'react-router-dom';
-import isEmpty from 'lodash/isEmpty';
+import { useNavigate } from 'react-router-dom';
 import { CONFIG } from '@/config';
 import './order-modal.scss';
 
 const OrderModal = () => {
-  const [params] = useSearchParams();
   const navigate = useNavigate();
 
   const [data, setData] = useState({
@@ -36,21 +29,7 @@ const OrderModal = () => {
   }, [data]);
 
   const isOpen = useTypeSelector(isModalSelector);
-  const selectedImage = useTypeSelector(selectedImageSelector);
-  const color = useTypeSelector(colorSelector);
-  const size = useTypeSelector(sizeSelector);
   const dispatch = useTypeDispatch();
-
-  const loading = useTypeSelector(loadingSelector);
-  const offers = useTypeSelector(offersSelector);
-
-  const setColor = (value: Value) => {
-    dispatch(changeColor(value));
-  };
-
-  const setSize = (value: Value) => {
-    dispatch(changeSize(value));
-  };
 
   const onCloseModal = () => dispatch(toggleModal(false));
 
@@ -69,24 +48,15 @@ const OrderModal = () => {
   };
 
   const sendData = async () => {
-    const foundOffer = find(offers, (offer) => offer.color === color && offer.size === size);
-
-    if (isEmpty(foundOffer?.externalId)) {
-      return api.error({
-        key: 'error',
-        message: 'Произошла ошибка повторите позже!',
-      });
-    }
-
     try {
       await axios.post(CONFIG.REQUESTS.SEND_ORDER, {
         ...data,
-        primaryId: foundOffer?.article,
-        productName: foundOffer?.name,
+        primaryId: 'mini-pila',
+        productName: 'Аккумуляторная цепная мини-пила',
         price: CONFIG.CRM.NEW_PRICE,
-        targetologId: isEmpty(params.get('targetolog')) ? CONFIG.CRM.TARGETOLOG_ID : params.get('targetolog'),
+        targetologId: CONFIG.CRM.TARGETOLOG_ID,
         webmasterId: CONFIG.CRM.WEBMASTER_ID,
-        orderMethod: isEmpty(params.get('method')) ? CONFIG.CRM.ORDER_METHOD : params.get('method'),
+        orderMethod: CONFIG.CRM.ORDER_METHOD,
         url: window.location.href.substring(0, 100),
         shopSite: CONFIG.CRM.SHOP_SITE,
         items: [
@@ -94,14 +64,7 @@ const OrderModal = () => {
             initialPrice: CONFIG.CRM.NEW_PRICE,
             quantity: 1,
             offer: {
-              externalId: foundOffer?.externalId,
-            },
-          },
-          {
-            initialPrice: 0,
-            quantity: 1,
-            offer: {
-              externalId: 'ortoped-stelki-blr',
+              externalId: 'mini-pila',
             },
           },
         ],
@@ -122,21 +85,12 @@ const OrderModal = () => {
     }
   };
 
-  if (loading) return;
-
   return (
     <>
       {contextHolder}
-      <Modal title="Женские ботинки Martin на толстой подошве" open={isOpen} onOk={onCloseModal} onCancel={onCloseModal} footer={null}>
+      <Modal title="Аккумуляторная цепная мини-пила" open={isOpen} onOk={onCloseModal} onCancel={onCloseModal} footer={null}>
         <div className="modal-header">
-          <div className="images">
-            <img src={selectedImage} alt="shoes" />
-          </div>
           <div className="right">
-            <div className="selects">
-              <SelectWithTitle {...getFilterByKey(offers, 'color', 'Цвет')} small selected={color} onSelect={setColor} />
-              <SelectWithTitle {...getFilterByKey(offers, 'size', 'Размер')} small selected={size} onSelect={setSize} />
-            </div>
             <div className="info">
               <Discount />
               <div className="prices">
@@ -160,7 +114,7 @@ const OrderModal = () => {
             Заказать со скидкой
           </button>
           <label className="form-label">
-            <input type="checkbox" checked required className="form-input-label" />Я согласен с политикой конфиденциальности и
+            <input type="checkbox" defaultChecked required className="form-input-label" />Я согласен с политикой конфиденциальности и
             пользовательским соглашением
           </label>
         </div>

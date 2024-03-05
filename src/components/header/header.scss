@@ -10,11 +10,11 @@
     font-size: 24px;
     font-weight: 600;
     text-transform: capitalize;
-
+    text-align: center;
     color: $white;
 
     @media (max-width: 680px) {
-      font-size: 20px;
+      font-size: 18px;
       padding: 10px 0;
     }
   }
@@ -38,7 +38,7 @@
       font-weight: 600;
 
       @media (max-width: 680px) {
-        font-size: 20px;
+        font-size: 18px;
       }
 
       span {
@@ -51,9 +51,10 @@
         align-items: center;
         justify-content: center;
         font-family: $font;
+        text-transform: uppercase;
 
         @media (max-width: 680px) {
-          max-width: 320px;
+          max-width: 240px;
           line-height: 1.2;
           margin: 0 auto;
           font-size: 18px;
@@ -66,14 +67,4 @@
       z-index: 2;
     }
   }
-}
-
-.subtitle {
-  text-align: center;
-  padding: 8px;
-  font-size: 17px;
-  font-weight: 700;
-  border-bottom: 1px solid $gray;
-  color: #000;
-  background-color: #e5ff02;
 }

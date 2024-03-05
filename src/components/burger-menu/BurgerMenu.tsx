@@ -9,27 +9,10 @@ interface IComponentProps {
 
 const BurgerMenu: FC<IComponentProps> = ({ open, onClose }) => {
   return (
-    <Drawer
-      title="Женские ботинки Martin на толстой подошве"
-      placement="left"
-      closable
-      onClose={onClose}
-      open={open}
-      className="burger-menu"
-    >
+    <Drawer title="Навигация" placement="left" closable onClose={onClose} open={open} className="burger-menu">
       <p>
         <a href="#advantages" title="преимущества" onClick={onClose}>
           преимущества
-        </a>
-      </p>
-      <p>
-        <a href="#size" title="преимущества" onClick={onClose}>
-          как выбрать размер
-        </a>
-      </p>
-      <p>
-        <a href="#about" title="преимущества" onClick={onClose}>
-          о нас
         </a>
       </p>
       <p>
