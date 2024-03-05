@@ -1,3 +1,3 @@
 export const imageData = {
-  Черный: 'main.png',
+  Черный: 'main1.png',
 };
