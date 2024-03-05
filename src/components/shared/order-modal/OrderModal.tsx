@@ -14,6 +14,14 @@ import { useNavigate } from 'react-router-dom';
 import { CONFIG } from '@/config';
 import './order-modal.scss';
 
+declare global {
+  interface Window {
+    ym: any;
+  }
+}
+
+window.ym = window.ym || {};
+
 const OrderModal = () => {
   const navigate = useNavigate();
 
@@ -76,6 +84,7 @@ const OrderModal = () => {
         name: '',
         phone: '',
       });
+      window.ym(96589207, 'reachGoal', 'btn-click-me');
       navigate('/thanks');
     } catch (e) {
       api.error({
