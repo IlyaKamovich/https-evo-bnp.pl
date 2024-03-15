@@ -4,8 +4,9 @@ import App from './App';
 import { store } from './store';
 import '@/assets/style/global.scss';
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
+const container = document.querySelector('#root') as Element;
+ReactDOM.createRoot(container).render(
   <Provider store={store}>
     <App />
-  </Provider>,
+  </Provider>
 );

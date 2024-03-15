@@ -7,7 +7,7 @@ const PaymentSection = () => {
   return (
     <section id="payment" className="payment">
       <div className="container">
-        <h2 className="title">ДОСТАВКА И ОПЛАТА</h2>
+        <h2 className="title">DOSTAWA I PŁATNOŚĆ</h2>
       </div>
       <div className="payment-path">
         {PAYMENT.map(({ icon, title, text }, i) => (

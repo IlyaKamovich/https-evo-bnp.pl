@@ -1,14 +1,42 @@
 export const ADVANTAGES = [
   {
-    src: 'bull/1.jfif',
-    html: '<strong class="info-title">Компактная и эргономичная</strong> <p class="info-text">Аккумуляторная электрическая пила, легкая и портативная, длительное время автономной работы. Удобная, эргономичный корпус, благодаря чему не будут уставать руки</p>',
+    src: 'bull/1.png',
+    html: '<strong class="info-title">Dostępne kolory</strong>',
   },
   {
-    src: 'bull/2.jfif',
-    html: '<strong class="info-title">Высокая производительность</strong> <p class="info-text">Двигатель с медным сердечником. Долгий срок службы, обеспечение безопасной работы, функция автоматического отключения</p>',
+    src: 'bull/2.png',
+    html: '<strong class="info-title">Wielofunkcyjny wyświetlacz. Zdalne sterowanie. Inteligentny rozruch. Ochrona przed kradzieżą</strong>',
   },
   {
-    src: 'bull/3.jfif',
-    html: '<strong class="info-title">Мощный аккумулятор</strong> <p class="info-text">Длительное время автономной работы за счет мощного АКБ нового поколения. Разработчики использовали самые современные технологии для создания аккумулятора</p>',
+    src: 'bull/3.png',
+    html: '<strong class="info-title">Poręczna kieszeń do przechowywania</strong>',
+  },
+  {
+    src: 'bull/4.png',
+    html: '<strong class="info-title">Ulepszone i odporne na zużycie opony bezdętkowe</strong>',
+  },
+  {
+    src: 'bull/5.png',
+    html: '<strong class="info-title">Przednie i tylne reflektory LED</strong>',
+  },
+  {
+    src: 'bull/6.png',
+    html: '<strong class="info-title">Wygodne fotele. Przód i tył</strong>',
+  },
+  {
+    src: 'bull/7.png',
+    html: '<strong class="info-title">Pojemny bagażnik</strong>',
+  },
+  {
+    src: 'bull/8.png',
+    html: '<strong class="info-title">Odporne na zużycie miękkie amortyzatory</strong>',
+  },
+  {
+    src: 'bull/9.png',
+    html: '<strong class="info-title">Mocny silnik</strong>',
+  },
+  {
+    src: 'bull/10.png',
+    html: '<strong class="info-title">Etui jako prezent</strong>',
   },
 ];

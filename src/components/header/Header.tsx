@@ -17,10 +17,10 @@ const Header = () => {
             <button type="button" className="icon-button menu-trigger" onClick={onOpen}>
               <img src="icons/burger.svg" alt="menu" />
             </button>
-            <span>Аккумуляторная цепная мини-пила</span>
+            <span>Ostateczna sprzedaż -30%</span>
           </div>
         </div>
-        <div className="sale">ДЛЯ ОБРЕЗАНИЯ ДЕРЕВЬЕВ И РАСПИЛКИ МЕЛКИХ ДРОВ</div>
+        <div className="sale">Hulajnoga elektryczna nowej generacji</div>
       </header>
       <BurgerMenu open={open} onClose={onClose} />
     </>

@@ -12,7 +12,7 @@ const ByuWithDiscount = () => {
 
   return (
     <button type="button" className="buy-with-discount" onClick={showModal}>
-      Заказать со скидкой
+      Zamówienie ze zniżką
     </button>
   );
 };

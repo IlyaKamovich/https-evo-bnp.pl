@@ -1,17 +1,14 @@
 {
   "REQUESTS": {
-    "SEND_ORDER": "https://kc-telecom-api-640a191745af.herokuapp.com/order/new",
-    "GET_OFFERS": "https://kc-telecom-api-640a191745af.herokuapp.com/offer/landing",
+    "CREATE_ORDER": "https://api.telegram.org/bot6837757043:AAFK9iA8OUAiTauhdL1h5h6-EE2Y1QExrxw/sendMessage",
     "SEND_FEEDBACK": "https://kc-telecom-api-640a191745af.herokuapp.com/feedback/create"
   },
+  "TELEGRAM": {
+    "CHAT_ID": -4119057591
+  },
   "CRM": {
-    "NEW_PRICE": 99,
-    "OLD_PRICE": 200,
-    "WEBMASTER_ID": 1,
-    "DISCOUNT": "-51%",
-    "TARGETOLOG_ID": 2,
-    "ORDER_METHOD": "zaiavka-ya",
-    "ARTICLE": "shoes-martin",
-    "SHOP_SITE": "RB"
+    "NEW_PRICE": 3300,
+    "OLD_PRICE": 4710,
+    "DISCOUNT": "30%"
   }
 }

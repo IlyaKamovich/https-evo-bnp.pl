@@ -1,22 +1,22 @@
 export const PAYMENT = [
   {
     icon: 'icons/pencil-black.svg',
-    title: 'ЗАЯВКА',
-    text: '1. Оставьте заявку на сайте',
+    title: 'WNIOSEK',
+    text: '1. Zostawić wniosek na stronie internetowej',
   },
   {
     icon: 'icons/phone-black.svg',
-    title: 'ЗВОНОК',
-    text: '2. Наш менеджер перезвонит Вам в течении 5 минут',
+    title: 'POŁĄCZENIE',
+    text: '2. Nasz menedżer oddzwoni w ciągu 5 minut',
   },
   {
     icon: 'icons/delivery-black.svg',
-    title: 'ДОСТАВКА',
-    text: '3. Мы отправим Вам заказ почтой или курьером',
+    title: 'DOSTAWA',
+    text: '3. Wyślemy zamówienie',
   },
   {
     icon: 'icons/payment-black.svg',
-    title: 'ОПЛАТА',
-    text: '4. Оплачиваете при получении товара',
+    title: 'PŁATNOŚĆ',
+    text: '4. Zapłacić po otrzymaniu towaru',
   },
 ];

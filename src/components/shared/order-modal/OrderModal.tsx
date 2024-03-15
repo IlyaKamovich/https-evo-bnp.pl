@@ -1,7 +1,9 @@
-import { ChangeEvent, useMemo, useState } from 'react';
-import { Modal, Input, notification } from 'antd';
+import { FC, Fragment, useState } from 'react';
 import axios from 'axios';
-import InputMask from 'react-input-mask';
+import moment from 'moment';
+import { useNavigate } from 'react-router-dom';
+import { Modal, notification } from 'antd';
+import { useForm, SubmitHandler } from 'react-hook-form';
 import { useTypeDispatch } from '../../../hooks/useTypeDispatch';
 import { useTypeSelector } from '../../../hooks/useTypeSelector';
 import { isModalSelector } from '../../../store/order-modal/selectors';
@@ -10,9 +12,14 @@ import Discount from '../discount/Discount';
 import OldPrice from '../old-price/OldPrice';
 import CurrentPrice from '../current-price/CurrentPrice';
 import { updateThanksData } from '../../../store/thanks/thanks.slice';
-import { useNavigate } from 'react-router-dom';
 import { CONFIG } from '@/config';
+
 import './order-modal.scss';
+
+export type Inputs = {
+  name: string;
+  phone: string;
+};
 
 declare global {
   interface Window {
@@ -22,82 +29,51 @@ declare global {
 
 window.ym = window.ym || {};
 
-const OrderModal = () => {
+const OrderModal: FC = () => {
   const navigate = useNavigate();
-
-  const [data, setData] = useState({
-    name: '',
-    phone: '',
-  });
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const { register, handleSubmit, reset } = useForm<Inputs>();
 
   const [api, contextHolder] = notification.useNotification();
-
-  const disableSend = useMemo(() => {
-    return Object.values(data).some((value) => !value.length);
-  }, [data]);
 
   const isOpen = useTypeSelector(isModalSelector);
   const dispatch = useTypeDispatch();
 
   const onCloseModal = () => dispatch(toggleModal(false));
 
-  const onChangeName = (event: ChangeEvent<HTMLInputElement>) => {
-    setData((state) => ({
-      ...state,
-      name: event.target.value,
-    }));
-  };
-
-  const onChangePhone = (event: ChangeEvent<HTMLInputElement>) => {
-    setData((state) => ({
-      ...state,
-      phone: event.target.value,
-    }));
-  };
-
-  const sendData = async () => {
+  const createOrder: SubmitHandler<Inputs> = async (data) => {
     try {
-      await axios.post(CONFIG.REQUESTS.SEND_ORDER, {
-        ...data,
-        primaryId: 'mini-pila',
-        productName: 'Аккумуляторная цепная мини-пила',
-        price: CONFIG.CRM.NEW_PRICE,
-        targetologId: CONFIG.CRM.TARGETOLOG_ID,
-        webmasterId: CONFIG.CRM.WEBMASTER_ID,
-        orderMethod: CONFIG.CRM.ORDER_METHOD,
-        url: window.location.href.substring(0, 100),
-        shopSite: CONFIG.CRM.SHOP_SITE,
-        items: [
-          {
-            initialPrice: CONFIG.CRM.NEW_PRICE,
-            quantity: 1,
-            offer: {
-              externalId: 'mini-pila',
-            },
-          },
-        ],
-      });
+      setIsLoading(true);
+      const text = `Nowe zamówienie \nCzas: ${moment().format('LLL')}\nNazwa: ${
+        data.name
+      }\nTelefon: ${data.phone.trim()}\nLink do strony: ${window.location.href.split('?')[0]}`;
+
+      await axios.post(
+        CONFIG.REQUESTS.CREATE_ORDER,
+        { chat_id: CONFIG.TELEGRAM.CHAT_ID, text },
+        { headers: { 'Content-Type': 'application/x-www-form-urlencoded' } }
+      );
 
       dispatch(updateThanksData({ name: data.name, phone: data.phone }));
       onCloseModal();
-      setData({
-        name: '',
-        phone: '',
-      });
-      window.ym(96589207, 'reachGoal', 'btn-click-me');
+      reset();
+
+      //window.ym(96589207, 'reachGoal', 'btn-click-me');
       navigate('/thanks');
     } catch (e) {
       api.error({
         key: 'error',
-        message: 'Произошла ошибка повторите позже!',
+        message: 'Wystąpił błąd, wykonaj ponownie później!',
       });
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <>
+    <Fragment>
       {contextHolder}
-      <Modal title="Аккумуляторная цепная мини-пила" open={isOpen} onOk={onCloseModal} onCancel={onCloseModal} footer={null}>
+      <Modal title="Hulajnoga Elektryczna Nowej Generacji" open={isOpen} onOk={onCloseModal} onCancel={onCloseModal} footer={null}>
         <div className="modal-header">
           <div className="right">
             <div className="info">
@@ -109,26 +85,19 @@ const OrderModal = () => {
             </div>
           </div>
         </div>
-        <div className="form">
-          <Input value={data.name} className="input" placeholder="Имя: Иван" onChange={onChangeName} />
-          <InputMask
-            className="input"
-            value={data.phone}
-            mask="+375 99 999 99 99"
-            autoComplete="off"
-            placeholder="Телефон: +375 ХХ ХХХ ХХ ХХ"
-            onChange={onChangePhone}
-          />
-          <button disabled={disableSend} type="button" className="send-button" onClick={sendData}>
-            Заказать со скидкой
+        <form className="form" onSubmit={handleSubmit(createOrder)}>
+          <input className="input" placeholder="Wpisz swoje imię i nazwisko" {...register('name', { required: true })} />
+          <input className="input" placeholder="Wprowadź swój numer telefonu" {...register('phone', { required: true })} />
+          <button disabled={isLoading} type="submit" className="send-button">
+            Zamówienie ze zniżką
           </button>
           <label className="form-label">
-            <input type="checkbox" defaultChecked required className="form-input-label" />Я согласен с политикой конфиденциальности и
-            пользовательским соглашением
+            <input type="checkbox" defaultChecked required className="form-input-label" />
+            Zgadzam się z polityką prywatności i umowę użytkownika
           </label>
-        </div>
+        </form>
       </Modal>
-    </>
+    </Fragment>
   );
 };
 

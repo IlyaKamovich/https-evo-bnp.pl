@@ -35,7 +35,7 @@ const AdvantagesSection = () => {
     <section id="advantages" className="advantages">
       <div className="container">
         <h2 ref={discount} className="advantages-title">
-          преимущества
+          KORZYŚCI
         </h2>
         <div className="advantages-grid">
           {ADVANTAGES.map((props, i) => (

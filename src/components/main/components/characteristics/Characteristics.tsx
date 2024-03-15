@@ -3,34 +3,35 @@ import './Characteristics.styles.scss';
 
 const CONTENT = [
   {
-    title: 'Материал:',
-    description: 'АБС + метал',
+    title: 'Maks. Prędkość:',
+    description: 'do 60 km/h',
   },
   {
-    title: 'Цвет:',
-    description: 'Черный',
+    title: 'Moc silnika elektrycznego (bezszczotkowy):',
+    description: '550 W',
   },
   {
-    title: 'Тип питания:',
-    description: 'Литиевая батарея',
+    title: 'Akumulator:',
+    description: 'napięcie 48 V, pojemność 20 Ah',
   },
   {
-    title: 'Мощность:',
-    description: '550 Вт',
+    title: 'Zasięg:',
+    description: 'do 60 km',
   },
   {
-    title: 'Поддержка:',
-    description: 'ОЭМ, ОДМ, ОБМ',
+    title: 'Dopuszczalne obciążenie:',
+    description: '150 kg',
   },
   {
-    title: 'Комплектация:',
-    description: 'Пила, АКБ 1шт, зарядка, отвертка, ключ, цепь, шина',
+    title: 'Liczba miejsc:',
+    description: '2',
   },
 ];
 
 const Characteristics: FC = () => {
   return (
     <div className="stats">
+      <h2 className="stats-title">CHARAKTERYSTYKA</h2>
       <ul className="stats-list">
         {CONTENT.map(({ title, description }) => {
           const currentDescription = !Array.isArray(description) ? description : description.map((text) => <p key={text}>{text}</p>);
