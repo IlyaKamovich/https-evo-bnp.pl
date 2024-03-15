@@ -13,6 +13,8 @@ import OldPrice from '../old-price/OldPrice';
 import CurrentPrice from '../current-price/CurrentPrice';
 import { updateThanksData } from '../../../store/thanks/thanks.slice';
 import { CONFIG } from '@/config';
+import 'moment/locale/ru';
+moment.locale('ru');
 
 import './order-modal.scss';
 
